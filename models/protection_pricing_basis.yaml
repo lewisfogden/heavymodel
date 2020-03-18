@@ -43,31 +43,31 @@ assumptions:
     expense_pp: 10
     mort_qx_mn:
             type: mortality_table
-            filename: models\tables\qx_TMNL08.csv
+            filename: models/tables/qx_TMNL08.csv
             select_period: 5
             pc_of_base: 1
     mort_qx_fn:
             type: mortality_table
-            filename: models\tables\qx_TFNL08.csv
+            filename: models/tables/qx_TFNL08.csv
             select_period: 5
             pc_of_base: 1
     qx_mn_prop: 0.5
 
     mort_qx_ms:
             type: mortality_table
-            filename: models\tables\qx_TMSL08.csv
+            filename: models/tables/qx_TMSL08.csv
             select_period: 5
             pc_of_base: 1   
     mort_qx_fs:
             type: mortality_table
-            filename: models\tables\qx_TFSL08.csv
+            filename: models/tables/qx_TFSL08.csv
             select_period: 5
             pc_of_base: 1
     qx_ms_prop: 0.6
     
     rfr:
         type: yield_curve
-        filename: models\tables\uk_zero_spot.csv
+        filename: models/tables/uk_zero_spot.csv
         key_period: annual
     
     lapse_rate_pa: 0.1
