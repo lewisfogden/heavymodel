@@ -13,8 +13,8 @@ from heavymodel.pricing import solve_prot_premium, get_bel
 
 if __name__=='__main__':
     
-    pricing_basis = Basis.read_yaml(r"models\protection_pricing_basis.yaml")
-    valuation_basis = Basis.read_yaml(r"models\protection_pricing_basis.yaml")
+    pricing_basis = Basis.read_yaml(r"models/protection_pricing_basis.yaml")
+    valuation_basis = Basis.read_yaml(r"models/protection_pricing_basis.yaml")
     
     quote = {
         "sum_assured":1000000,
