@@ -6,6 +6,8 @@ Contents
 
 - [Methodology](methodology)
 
+- [Definitions](definitions)
+
 - [Example 1: Stochastic Modelling](example-stochastic)
 
 - [Example 2: Protection Pricing](example-protection)
