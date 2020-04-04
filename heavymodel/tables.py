@@ -37,7 +37,36 @@ class MortalityTable:
     def __getitem__(self, key):
         age, duration = key
         return self.get(age, duration)
-
+    
+class MortalityImprovementTable:
+    """mortalitytable is a matrix, by age and duration."""
+    def __init__(self, csv_filename):
+        self.filename = csv_filename
+        self.load_csv(self.filename)
+    
+    def load_csv(self, filename):
+        with open(filename, 'r') as csv_file:
+            header = None
+            self.q = dict()
+            for raw_line in csv_file:
+                line_array = raw_line.strip("\n").split(",")
+                if header is None:
+                    header = line_array
+                    years = [int(year) for year in header[1:]]
+                else:
+                    age = int(line_array[0])
+                    values = line_array[1:]
+                    for year, value in zip(years, values):
+                        if value != "":
+                            self.q[age, year] = float(value)
+        
+    def get(self, age, year):
+        return self.q[(age, year)]
+    
+    def __getitem__(self, key):
+        age, year = key
+        return self.get(age, year)
+    
 class RangeTable:
     """range table"""
     def __init__(self, filename=None):
