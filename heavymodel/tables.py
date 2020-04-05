@@ -39,7 +39,7 @@ class MortalityTable:
         return self.get(age, duration)
     
 class MortalityImprovementTable:
-    """mortalitytable is a matrix, by age and duration."""
+    """MortalityImprovementTable is a matrix, by age and year."""
     def __init__(self, csv_filename):
         self.filename = csv_filename
         self.load_csv(self.filename)
