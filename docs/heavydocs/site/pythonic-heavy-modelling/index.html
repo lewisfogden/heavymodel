@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Rationale - DigitalActuary.co.uk</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-forest-light.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">DigitalActuary.co.uk</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Rationale</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Getting Started <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../model-walkthrough/" class="dropdown-item">Walkthrough</a>
+</li>
+                                    
+<li>
+    <a href="../definitions/" class="dropdown-item">Definitions</a>
+</li>
+                                    
+<li>
+    <a href="../project-layout/" class="dropdown-item">Project Layout</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Use Cases <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../stochastic-modelling/" class="dropdown-item">Stochastic Modelling</a>
+</li>
+                                    
+<li>
+    <a href="../asset-modelling/" class="dropdown-item">Asset Modelling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Utilities <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../typed-csv-specification/" class="dropdown-item">Typed CSV</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../installation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#pythonic-heavy-modelling" class="nav-link">Pythonic Heavy Modelling</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#primary-motivation-problem-statement" class="nav-link">Primary Motivation / Problem Statement</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#speed-comparison-of-the-two-methods" class="nav-link">Speed comparison of the two methods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="pythonic-heavy-modelling">Pythonic Heavy Modelling</h1>
+<h2 id="primary-motivation-problem-statement">Primary Motivation / Problem Statement</h2>
+<p>Heavy models are models which are complex to compute, where values likely to be contingent; that is where the value at each timepoint <em>t</em> depends on the values at <em>t-1</em>, <em>t-2</em> etc. through to <em>t=0</em>.</p>
+<p>This contingency can result in even a simple model causing stack overflows and other nastiness.  Fortunately there are solutions, this document outlines one approach using the <em>heavymodel</em> library I have developed in Python.</p>
+<p>A trivial example is would be a value which starts at 1 at <em>t=0</em>, and reduces by 5% at each subsequent time point.  Without using the heavymodel library this could be written as:</p>
+<pre><code class="python">class DecreasingModel():
+    def var(self, t):
+        if t==0:
+            return 1
+        else:
+            return self.var(t-1) * 0.95
+</code></pre>
+
+<p>This example could be run as follows:</p>
+<pre><code class="python">dm = DecreasingModel()
+results = {t:dm.var(t) for t in range(0, 11)}
+</code></pre>
+
+<p>As expected, this gives results as follows:</p>
+<pre><code class="python">{0: 1,
+ 1: 0.95,
+ 2: 0.9025,
+...
+
+ 9: 0.6302494097246091,
+ 10: 0.5987369392383786}
+</code></pre>
+
+<p>As it is recursive <code>dm.var(10)</code> will be called once, <code>dm.var(9)</code> will be called twice, <code>dm.var(0)</code> called 11 times, in total 66 calls.&nbsp; For <em>t=n</em>, the total calls is <em>n(n+1)/2</em>, i.e. O(n²);  If we were to introduce multiple dependent functions the number of computations would grow exponentially.
+We can see the speed using the ipython magic function %timeit:</p>
+<pre><code class="python">In [6]: %timeit results = {t:dm.var(t) for t in range(0, 20)}
+10000 loops, best of 3: 25.2 µs per loop
+
+In [7]: %timeit results = {t:dm.var(t) for t in range(0, 120)}
+1000 loops, best of 3: 871 µs per loop
+</code></pre>
+
+<p>To an actuary writing model and expecting execution similar to Excel, this can be a nasty surprise, and result in programming languages being rejected.</p>
+<p>To minimise run speed (and avoid recursion and stack overflows), we want to evaluate each function at most once.</p>
+<p>The solution can be achieved by inheriting from the <code>Model</code> class in the <code>heavymodel</code> library, which provides functionality to evaluate the user model.  The example above can be rewritten as:</p>
+<pre><code class="python">from heavymodel import Model
+class DecreasingModel2(Model):
+    def var(self, t):
+        if t==0:
+            return 1
+        else:
+            return self.var(t-1) * 0.95
+</code></pre>
+
+<p><code>Model</code> supplies a helper method <code>_run</code> which evaluates the model at each time point from t=0 to t=proj_length-1 (as python is zero-indexed):</p>
+<pre><code class="python">dm2 = DecreasingModel2()
+dm2._run(proj_length=11)
+results = dm2.var.values   # results are stored in the .values attribute
+</code></pre>
+
+<p>Results are identical to the first case:</p>
+<pre><code class="python">{0: 1,
+ 1: 0.95,
+ 2: 0.9025,
+...
+ 9: 0.6302494097246091,
+ 10: 0.5987369392383786}
+</code></pre>
+
+<p>Timings are outlined in the section below.</p>
+<p><strong>Aside:</strong> The <code>_run</code> method is provided by the <code>heavymodel.Model</code> class, which is inherited by the user model class.  It's implementation may vary but its purpose is to calculate each single argument user method starting from <em>t=0</em> up to <em>proj_length-1</em>.</p>
+<h2 id="speed-comparison-of-the-two-methods">Speed comparison of the two methods</h2>
+<p>Timing dm2._run() is complicated by the fact that after the first run, results are stored for that instance.  To provide a like-for-like comparison we need to create a new instance of the model for each evaluation:</p>
+<pre><code class="python">def dm_time(proj_len):
+    dm = DecreasingModel()
+    results = {t:dm.var(t) for t in range(0, proj_len)}
+    return results
+
+def dm2_time(proj_len):
+    dm2 = DecreasingModel2()
+    dm2._run(proj_len)
+    return dm2.var.values
+</code></pre>
+
+<p>Using <code>%timeit</code> over a series of values of proj_len allows us to measure the relative speeds, for example for <code>proj_len=70</code>.</p>
+<pre><code class="python">In [72]: %timeit dm_time(70)
+1000 loops, best of 3: 284 µs per loop
+
+In [73]: %timeit dm2_time(70)
+10000 loops, best of 3: 99.7 µs per loop
+</code></pre>
+
+<p>A log-log plot of results is below.  We can see that dm2 (the model using <code>heavymodel.Model</code>) has an increased initialisation time, but for projection lengths greater than 50(ish), <code>dm2</code> becomes substantially quicker.  At <em>proj_len</em> equal to 1280 and 2560, <code>dm</code> failed due to a RecursionError.</p>
+<p><img alt="speed comparison plot" src="../img/speed_comparison1.png" title="Speed Comparison Plot" /></p>
+<p>Given that most heavy models are likely to be run monthly for at least 20 years, a typical proj_len will be 240 or greater, and so the <em>heavymodel</em> approach should give substantial speed benefits.</p>
+<p>If you are interested in other approaches, I recommend the <a href="https://open-actuarial.readthedocs.io/en/latest/index.html">OpenActuarial site</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(c)2020 Lewis Fogden</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

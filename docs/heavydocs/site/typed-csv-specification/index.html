@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Typed CSV - DigitalActuary.co.uk</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-forest-light.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">DigitalActuary.co.uk</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../pythonic-heavy-modelling/" class="nav-link">Rationale</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Getting Started <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="../model-walkthrough/" class="dropdown-item">Walkthrough</a>
+</li>
+                                    
+<li>
+    <a href="../definitions/" class="dropdown-item">Definitions</a>
+</li>
+                                    
+<li>
+    <a href="../project-layout/" class="dropdown-item">Project Layout</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Use Cases <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../stochastic-modelling/" class="dropdown-item">Stochastic Modelling</a>
+</li>
+                                    
+<li>
+    <a href="../asset-modelling/" class="dropdown-item">Asset Modelling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Utilities <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Typed CSV</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../asset-modelling/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#typed-csv-specification" class="nav-link">Typed CSV Specification</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#rationale" class="nav-link">Rationale</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#key-rules" class="nav-link">Key Rules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#data-types" class="nav-link">Data Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#metadata" class="nav-link">Metadata</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#custom-separator" class="nav-link">Custom Separator</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#application-specific-types" class="nav-link">Application specific types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="typed-csv-specification">Typed CSV Specification</h1>
+<h2 id="rationale">Rationale</h2>
+<p>The purpose of the typed csv specification is to build on the common csv (comma separated value) specification with a standard unambigious format.</p>
+<p>The key issues with most csv files at present are:</p>
+<ul>
+<li>Character encodings are not defined</li>
+<li>The data has no type attributes, so <code>1</code> could be considered an integer, floating point number, or a string. File loaders often have to guess the type, and modelling software needs to be written to explicitly cast types.</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>An example of typed csv:</p>
+<pre>
+# comment lines
+@ author: name@domain.com
+@ write_date: 2020_03_50
+!,time,score,word,is_first,price,start_date,start_time
+?,int,float,str,bool,dec,yyyy_mm_dd,hh_mm_ss
+*,1,1.23,hello,Y,2.52,2020_03_28,14_20_40
+</pre>
+
+<h2 id="key-rules">Key Rules</h2>
+<ul>
+<li>Typed CSV files are always encoded as UTF-8.</li>
+<li>All header names, header types and data rows must have the same length.</li>
+<li>The first character in the line determines the purpose of the line.</li>
+<li>The first character must be followed by a comma if it is <code>!</code>,<code>?</code> or <code>*</code>.</li>
+<li>the separator defaults to comma <code>,</code>.</li>
+<li><code>@</code> can have a space between it and the metadata key.</li>
+<li>All meta data must be above the header row</li>
+<li>Rows must be in the following order: meta &gt; header &gt; types &gt; data</li>
+<li>Comments can be placed anywhere and will be ignored</li>
+<li>Rows must end with a new line character <code>\n</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Character</th>
+<th align="left">Purpose</th>
+<th align="right">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">#</td>
+<td align="left">comment</td>
+<td align="right">ignored</td>
+</tr>
+<tr>
+<td align="center">@</td>
+<td align="left">metadata</td>
+<td align="right">for storing individual values, key and value are separated by a colon <code>:</code></td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td align="left">header</td>
+<td align="right">names of the columns in the data</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="left">data types</td>
+<td align="right">the type of data in the column</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="left">data row</td>
+<td align="right">a row of data values</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-types">Data Types</h2>
+<ul>
+<li><code>int</code>: Integer (..., -3, -2, -1, 0, 1, 2, 3, ...)</li>
+<li><code>float</code>: Floating Point Number (13523.524), only decimal notation is supported</li>
+<li><code>str</code>: String/Text</li>
+<li><code>bool</code>: Boolean, using the following (case insensitive)<ul>
+<li><code>T</code>, <code>1</code>, <code>Y</code>, <code>true</code> evaluate to True</li>
+<li><code>F</code>, <code>0</code>, <code>N</code>, <code>false</code>, evaluate to False</li>
+</ul>
+</li>
+<li><code>dec</code>: Decimal for dealing with currency</li>
+<li><code>yyyy_mm_dd</code>: date</li>
+<li><code>hh_mm_ss</code>: time</li>
+<li><code>u_</code>: a user defined type</li>
+</ul>
+<p>Data for number types (<code>int</code>, <code>float</code>, <code>dec</code>) can optionally have underscore characters (<code>_</code>) as thousand separators.  These will be ignored on processing.</p>
+<h2 id="metadata">Metadata</h2>
+<p>A single whitespace <code></code> can be added before the <code>@</code>. Thus the following are valid metadata and mean the same. Any trailing whitespace will be considered part of the key.</p>
+<p>Any characters after the colon (<code>:</code>) will be considered part of the value, up until the new line.</p>
+<p>The type of the value is not documented.</p>
+<pre>
+@key:value
+@ key:value
+</pre>
+
+<h3 id="reserved-keys">Reserved keys</h3>
+<p>Reserved keys are optional, but can enhance the stability of the data</p>
+<ul>
+<li><code>@length</code>: The number of rows of data, as an integer, if this is supplied and the values does not match the number of data rows, an error will occur.</li>
+<li><code>@separator</code>: The separator character(s)</li>
+<li><code>@md5-checksum</code>: An 128bit MD5 checksum, presented as 32 hexadecimal digits (0-9a-f), this hash is based on a string containing header, types and data in the order they appear.  Metadata and comments are ignored. See <a href="https://en.wikipedia.org/wiki/MD5">https://en.wikipedia.org/wiki/MD5</a> for details of MD5.</li>
+</ul>
+<h2 id="custom-separator">Custom Separator</h2>
+<p>If the data is likely to contain commas, a custom separator can be specified by
+<code>@separator</code> metadata item.  The separator can consist of one or more characters.</p>
+<pre>
+@separator:^|^
+</pre>
+
+<h2 id="application-specific-types">Application specific types</h2>
+<p>A type beginning with <code>u_</code> is left to the application to process.</p>
+<p>An example would be <code>u_yyyy_mm</code> which would store the year and month.</p>
+<p>Caution should be taken to avoid name conflicts.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(c)2020 Lewis Fogden</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

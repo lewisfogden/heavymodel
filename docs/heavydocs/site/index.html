@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>DigitalActuary.co.uk</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-forest-light.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">DigitalActuary.co.uk</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="pythonic-heavy-modelling/" class="nav-link">Rationale</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Getting Started <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="installation/" class="dropdown-item">Installation</a>
+</li>
+                                    
+<li>
+    <a href="model-walkthrough/" class="dropdown-item">Walkthrough</a>
+</li>
+                                    
+<li>
+    <a href="definitions/" class="dropdown-item">Definitions</a>
+</li>
+                                    
+<li>
+    <a href="project-layout/" class="dropdown-item">Project Layout</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Use Cases <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="stochastic-modelling/" class="dropdown-item">Stochastic Modelling</a>
+</li>
+                                    
+<li>
+    <a href="asset-modelling/" class="dropdown-item">Asset Modelling</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Utilities <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="typed-csv-specification/" class="dropdown-item">Typed CSV</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="pythonic-heavy-modelling/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#welcome-to-digitalactuary" class="nav-link">Welcome to DigitalActuary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#what-is-heavymodel" class="nav-link">What is heavymodel?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#simple-example" class="nav-link">Simple Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="welcome-to-digitalactuary">Welcome to DigitalActuary</h2>
+<p>DigitalActuary is the home page for <code>heavymodel</code>, a python based actuarial modelling library.</p>
+<p>My intention is to release the library as open source software, however as <code>heavymodel</code> is currently in closed beta, if you would like to test it or have any questions please contact me (Lewis Fogden) via:</p>
+<ul>
+<li>Twitter <a href="https://twitter.com/lewisfogden">@lewisfogden</a></li>
+<li>LinkedIn <a href="https://www.linkedin.com/in/lewisfogden/">linkedin.com/in/lewisfogden</a></li>
+</ul>
+<p>As <code>heavymodel</code> is currently in development, this documentation is incomplete in places, subject to change, and may have the occasional typo.</p>
+<h2 id="what-is-heavymodel">What is heavymodel?</h2>
+<p><code>heavymodel</code> is a class-based library which enables Actuaries (and other modelling professionals) to build actuarial models in <a href="https://www.python.org">Python</a>, using a function-based syntax similar to other actuarial modelling software, combined with the simplicity of writing code in python.</p>
+<p>It is intended for prototyping models, and also implementing them within wider software releases, for example web-based quote engines, capital models, and optimisation models.</p>
+<p>The core library places very few constraints on modellers, so is applicable to domains such as:</p>
+<ul>
+<li>product pricing</li>
+<li>deterministic valuations</li>
+<li>stochastic modelling</li>
+<li>nested models</li>
+</ul>
+<p>It requires no additional libraries so can be used with recent Python distributions on any platform (Windows, Linux, Cloud).</p>
+<h2 id="simple-example">Simple Example</h2>
+<p>The following code is for a simple persistency model, with policies decreasing 10% each year.</p>
+<pre><code class="python">import pandas as pd
+import seaborn as sns
+sns.set()
+
+from heavymodel import Model
+
+class PersistencyModel(Model):
+    def num_policies(self, t):
+        if t == 0:
+            return 1
+        else:
+            return self.num_policies(t-1) - self.num_lapses(t-1)
+
+    def num_lapses(self, t):
+        return 0.1 * self.num_policies(t)
+
+model = PersistencyModel()
+
+model._run(20)
+
+df = pd.DataFrame({&quot;num_lapses&quot;:model.num_lapses.values, &quot;num_policies&quot;:model.num_policies.values})
+sns.lineplot(data=df)
+</code></pre>
+
+<p>This produces the following graph.</p>
+<p><center><img alt="simple example plot" src="img/simple_example_plot.png" title="Simple Example Plot" /></center></p>
+<p>For further details, please see the <em>Getting Started</em> section of the site.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(c)2020 Lewis Fogden</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.1
+Build Date UTC : 2020-04-01 08:06:01
+-->

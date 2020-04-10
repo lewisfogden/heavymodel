@@ -1,0 +1,23 @@
+site_name: DigitalActuary.co.uk
+nav:
+    - Home: index.md
+    - Rationale: pythonic-heavy-modelling.md
+    - Getting Started:
+       - Installation: installation.md
+       - Walkthrough: model-walkthrough.md
+       - Definitions: definitions.md
+       - Project Layout: project-layout.md
+    - Use Cases:
+       - Stochastic Modelling: stochastic-modelling.md
+       - Asset Modelling: asset-modelling.md
+    - Utilities:
+       - Typed CSV: typed-csv-specification.md
+theme:
+    name: journal
+    #nav_style: light
+    #custom_dir: custom_theme/
+# extra_css: [extra.css]
+
+copyright: (c)2020 Lewis Fogden
+
+# ERROR   -  Config value: 'theme'. Error: Unrecognised theme name: 'material'. The available installed themes are: mkdocs, readthedocs, cerulean, cosmo, cyborg, darkly, flatly, journal, litera, lumen, lux, materia, minty, pulse, sandstone, simplex, slate, solar, spacelab, superhero, united, yeti, bootstrap
