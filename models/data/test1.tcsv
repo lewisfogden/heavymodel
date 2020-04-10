@@ -1,0 +1,10 @@
+#
+@ author:lewis@fogden.org
+@ write_date:2020_03_50
+@ length:2
+@ separator:,
+#
+!,id,score,word,is_first,price,start_date,start_time
+?,int,float,str,bool,dec,yyyy_mm_dd,hh_mm_ss
+*,1,1.23,hello,Y,2.52,2020_03_28,14_20_40
+*,2,5.63,bye,F,2.522,2040_11_14,23_59_59
