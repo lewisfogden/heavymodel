@@ -14,10 +14,5 @@ nav:
        - Typed CSV: typed-csv-specification.md
 theme:
     name: journal
-    #nav_style: light
-    #custom_dir: custom_theme/
-# extra_css: [extra.css]
 
 copyright: (c)2020 Lewis Fogden
-
-# ERROR   -  Config value: 'theme'. Error: Unrecognised theme name: 'material'. The available installed themes are: mkdocs, readthedocs, cerulean, cosmo, cyborg, darkly, flatly, journal, litera, lumen, lux, materia, minty, pulse, sandstone, simplex, slate, solar, spacelab, superhero, united, yeti, bootstrap

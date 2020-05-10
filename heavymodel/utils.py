@@ -6,11 +6,11 @@ class Cache:
     self.values = dict()
     self.__name__ = "Cache: "+func.__name__
 
-  def __call__(self, arg):
+  def __call__(self, *arg):
     if arg in self.values:
         return self.values[arg]
     else:
-        result = self.func(arg)
+        result = self.func(*arg)
         self.values[arg] = result
         return result
   def __repr__(self):

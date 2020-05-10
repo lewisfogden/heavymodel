@@ -21,7 +21,7 @@ if __name__=='__main__':
         "annual_premium":1,
         "init_pols_if":1,
         "extra_mortality":0,
-        "sex":"F"
+        "sex":"M"
     }
     data = Data(quote)
 

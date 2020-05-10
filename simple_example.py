@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 31 21:32:06 2020
 
-@author: user
-"""
 import pandas as pd
 import seaborn as sns
 sns.set()
@@ -16,7 +12,7 @@ class DemographicModel(Model):
 			return 1
 		else:
 			return self.num_policies(t-1) - self.num_lapses(t-1)
-	
+
 	def num_lapses(self, t):
 		return 0.1 * self.num_policies(t)
 

@@ -6,13 +6,13 @@ from inspect import signature
 class Model:
     """The Model class provides the core caching functionality required for a heavy model.
 
-    Functions in a heavy model should not start with an underscore "_"
+    User methods subsetting from Model should not start with an underscore "_"
 
-    functions are as follows:
+    Built-in functions are as follows:
     _update(data or basis item): adds data or basis to the model space
-    _clear_cache()
-    _run(proj_len)
-    _dataframe()
+    _clear_cache(): clears all stored values
+    _run(proj_len): run
+    _dataframe():
 
     """
 
@@ -29,19 +29,19 @@ class Model:
                 warnings.warn("Warning: Duplicate Item: "+str(k))
             setattr(self, k, v)
 
-    def _cache_funcs(self):
+    def _cache_funcs(self, verbose=False):
         #print("Caching...")
         self._funcs = {}
-        for k in dir(self):
-            v = getattr(self, k)
-            #print(k, v, isinstance(v, types.MethodType), isinstance(v, opus.utils.Cache))
+        for method_name in dir(self):
+            method = getattr(self, method_name)
+            if verbose:
+                print("Caching: ", method_name, " object: ", method)
             #if k[0] != "_" and callable(v) and not isinstance(v, opus.utils.Cache):
-            if k[0] != "_" and isinstance(v, types.MethodType):
-                v_params = signature(v).parameters # we need an identifier for the arg length.
-                v_param_len = len(v_params)
-                cached_v = Cache(v, v_param_len)
-                setattr(self, k, cached_v)
-                self._funcs[k] = cached_v
+            if method_name[0] != "_" and isinstance(method, types.MethodType):
+                param_count = len(signature(method).parameters) # we need an identifier for the arg length.
+                cached_method = Cache(method, param_count)
+                setattr(self, method_name, cached_method)
+                self._funcs[method_name] = cached_method
         #print("INFO: _cache_funcs | cached funcs: "+str(len(self._funcs)))
 
     def _clear_cache(self):
@@ -53,9 +53,9 @@ class Model:
             except AttributeError:
                 pass
 
-    def _run(self, proj_len):
+    def _run(self, proj_len, verbose=False):
         self._clear_cache()
-        self._cache_funcs()
+        self._cache_funcs(verbose)
         for t in range(proj_len):
             for var in self._funcs.keys():
                 func = getattr(self, var)
