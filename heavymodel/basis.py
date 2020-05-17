@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 25 20:02:03 2019
-
-@author: user
-"""
-
-# loadyaml.py
 
 import yaml
 from .tables import MortalityTable, YieldCurve

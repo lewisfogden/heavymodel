@@ -1,7 +1,36 @@
-from .utils import Cache
 import types
 import warnings
 from inspect import signature
+
+class Cache:
+    """Cache provides controllable memoization for model methods"""
+
+    def __init__(self, func, param_len):
+        self.func = func
+        self.param_len = param_len
+        self.has_one_param = self.param_len == 1
+        self.values = dict()
+        self.__name__ = "Cache: " + func.__name__
+
+    def __call__(self, *arg):
+        if arg in self.values:
+            return self.values[arg]
+        else:
+            result = self.func(*arg)
+            self.values[arg] = result
+            return result
+
+    def __repr__(self):
+        return (
+            "<CFunction: "
+            + str(self.func.__name__)
+            + " size: "
+            + str(len(self.values))
+            + ">"
+        )
+
+    def clear_cache(self):
+        self.values = dict()
 
 class Model:
     """The Model class provides the core caching functionality required for a heavy model.
@@ -73,5 +102,6 @@ class Model:
         import pandas as pd
         df = pd.DataFrame()
         for func in self._funcs:
-            df[func] = pd.Series(self._funcs[func].values)
+            if func.has_one_param:
+                df[func] = pd.Series(self._funcs[func].values)
         return df

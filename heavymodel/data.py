@@ -1,4 +1,4 @@
-# amo.data.py
+# -*- coding: utf-8 -*-
 
 class Data:
     def __init__(self, d):

@@ -1,7 +1,5 @@
-# opus initialisation file
+# -*- coding: utf-8 -*-
 
-# the root of opus exposes all the useful stuff to user.
-print("importing")
 from .model import Model
 from .data import Data
 from .basis import Basis

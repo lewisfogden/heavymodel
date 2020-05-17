@@ -121,7 +121,7 @@ class YieldCurve:
     def npv(self, cashflow, proj_len):
         pv = 0.0
         for t in range(0, proj_len):
-            pv += self.v[t] * cashflow(t)   # TODO: check if cashflow(t) or cashflow[t] is more appropriate
+            pv += self.v[t] * cashflow(t)
         return pv
 
 class ModelPoints:
@@ -153,9 +153,4 @@ class ModelPoints:
     
     def __getitem__(self, key):
         return self.mps[key]
-        
 
-
-if __name__=="__main__":
-    qx = MortalityTable(csv_filename=r"tables/qx_TMNL08.csv", name="TMNL08", select_period=5)
-    rfr = YieldCurve(filename=r"tables/uk_zero_spot.csv", key_period="annual", rate_type="spot_rate")
