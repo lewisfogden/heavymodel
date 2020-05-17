@@ -24,10 +24,17 @@ class Model:
             self._update(basis)
 
     def _update(self, items, warn=True):
-        for k, v in vars(items).items():
-            if k in dir(self) and warn:
-                warnings.warn("Warning: Duplicate Item: "+str(k))
-            setattr(self, k, v)
+        if isinstance(items, dict):
+            for k,v in items.items():
+                if k in dir(self) and warn:
+                   warnings.warn("Warning: Duplicate Item: "+str(k))
+                setattr(self, k, v)
+        else:
+            # need to check that this is a data object
+            for k, v in vars(items).items():
+                if k in dir(self) and warn:
+                    warnings.warn("Warning: Duplicate Item: "+str(k))
+                setattr(self, k, v)
 
     def _cache_funcs(self, verbose=False):
         #print("Caching...")

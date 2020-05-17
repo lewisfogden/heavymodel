@@ -1,0 +1,80 @@
+# prot_config.yaml
+# the first level is the section of the configuration
+# the second layer is the name of each exposed value
+# the third layer indicates the type, and how it is to be imported
+
+metadata:
+    version: v1.25
+    author: Lewis Fogden (lewisfogden@hotmail.com)
+
+data:
+    sum_assured:
+       type: float
+       validation: 
+            min: 10000
+            max: 1000000
+
+    age_at_entry:
+        type: int
+        validation:
+            min: 18
+            max: 65
+
+    term_y:
+        type: int
+        validation:
+             min: 10
+             max: 30
+              
+    smoker_status:
+        type: str
+        validation:
+           - S
+           - N
+             
+    shape:
+        type: str
+        validation:
+            - level
+            - decreasing
+    
+assumptions:
+    cost_inflation_pa: 0.035
+    expense_pp: 10
+    mort_qx_mn:
+            type: mortality_table
+            filename: models/tables/qx_example.csv
+            select_period: 5
+            pc_of_base: 0.98
+    mort_qx_fn:
+            type: mortality_table
+            filename: models/tables/qx_example.csv
+            select_period: 5
+            pc_of_base: 0.95
+    qx_mn_prop: 0.5
+
+    mort_qx_ms:
+            type: mortality_table
+            filename: models/tables/qx_example.csv
+            select_period: 5
+            pc_of_base: 1.08   
+    mort_qx_fs:
+            type: mortality_table
+            filename: models/tables/qx_example.csv
+            select_period: 5
+            pc_of_base: 1.05
+    qx_ms_prop: 0.6
+    
+    rfr:
+        type: yield_curve
+        filename: models/tables/uk_zero_spot.csv
+        key_period: annual
+    
+    lapse_rate_pa: 0.1
+    gender_neutral: 1
+
+        
+parameters:
+    k_factor: 1
+    c_factor: 2
+    debug: 0
