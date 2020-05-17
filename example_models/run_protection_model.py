@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from models.protection_model import TermAssurance
+from protection.protection_model import TermAssurance
 from heavymodel import Data, Basis
-from heavymodel.pricing import solve_prot_premium, get_bel
+from protection.pricing import solve_prot_premium, get_bel
 #TODO: add Basis.read_yaml as a @classmethod
 #TODO: add Basis.read_xml as a @classmethod
 
 
 if __name__=='__main__':
 
-    pricing_basis = Basis.read_yaml(r"models/protection_pricing_basis.yaml")
-    valuation_basis = Basis.read_yaml(r"models/protection_pricing_basis.yaml")
+    pricing_basis = Basis.read_yaml(r"protection/protection_pricing_basis.yaml")
+    valuation_basis = Basis.read_yaml(r"protection/protection_pricing_basis.yaml")
 
     quote = {
         "sum_assured":1000000,
