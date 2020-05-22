@@ -14,6 +14,7 @@ Import heavymodel, and then subclass your own model from `Model`:
 
 ```python
 from heavymodel import Model
+import pandas as pd
 
 class DemographicModel(Model):
 	def num_policies(self, t):
@@ -30,6 +31,7 @@ demo = DemographicModel()
 demo._run(20)
 
 df = pd.DataFrame({"num_lapses":demo.num_lapses.values, "num_policies":demo.num_policies.values})
+print(df)
 ```
 
 See https://www.digitalactuary.co.uk/ for further documentation.
