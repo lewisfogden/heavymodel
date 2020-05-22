@@ -1,7 +1,17 @@
 # Installation
 
-As `heavymodel` is currently in closed beta, no installation instructions are provided here.
+**Note that heavymodel is currently in development**
 
-Once it is released, it will be available for download from github.
+Heavymodel is available from the Python Package Index (pypi.org):
 
-If you wish to deploy sitewide, copy the heavymodel\ folder to a directory on your module search path e.g. `C:\ProgramData\Anaconda3\Lib\site-packages\` or similar.
+[https://pypi.org/project/heavymodel-lewisfogden/](https://pypi.org/project/heavymodel-lewisfogden/)
+
+To install, use pip at the command line:
+
+`pip install heavymodel-lewisfogden`
+
+Source code is available on GitHub, along with examples:
+
+[https://github.com/lewisfogden/heavymodel/](https://github.com/lewisfogden/heavymodel/)
+
+If you have any issues please raise an issue on GitHub.

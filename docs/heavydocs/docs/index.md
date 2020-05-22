@@ -2,12 +2,14 @@
 
 DigitalActuary is the home page for `heavymodel`, a python based actuarial modelling library.
 
-My intention is to release the library as open source software, however as `heavymodel` is currently in closed beta, if you would like to test it or have any questions please contact me (Lewis Fogden) via:
+I have released `heavymodel` as open source software, for installation instructions and source code please see the [installation](installation) page.
+
+I can also be contacted via:
 
 - Twitter [@lewisfogden](https://twitter.com/lewisfogden)
 - LinkedIn [linkedin.com/in/lewisfogden](https://www.linkedin.com/in/lewisfogden/)
 
-As `heavymodel` is currently in development, this documentation is incomplete in places, subject to change, and may have the occasional typo.
+As `heavymodel` is currently in development, this documentation is incomplete in places, subject to change, and may have the occasional typo.  Experimentation is encouraged, however please bear in mind the license conditions when using.
 
 ## What is heavymodel?
 
