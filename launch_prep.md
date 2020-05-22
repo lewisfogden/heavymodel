@@ -17,7 +17,7 @@
 
 - folders:
    - [ ] delete unused code etc
-   - [ ] add GPL License
+   - [X] add License
 
 - advertise:
    - [ ] twitter message

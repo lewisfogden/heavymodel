@@ -1,0 +1,12 @@
+README.md
+setup.py
+heavymodel/__init__.py
+heavymodel/basis.py
+heavymodel/data.py
+heavymodel/model.py
+heavymodel/tables.py
+heavymodel/yaml_validation.py
+heavymodel_lewisfogden.egg-info/PKG-INFO
+heavymodel_lewisfogden.egg-info/SOURCES.txt
+heavymodel_lewisfogden.egg-info/dependency_links.txt
+heavymodel_lewisfogden.egg-info/top_level.txt

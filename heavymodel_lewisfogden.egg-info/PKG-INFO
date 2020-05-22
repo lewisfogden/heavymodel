@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: heavymodel-lewisfogden
+Version: 0.0.1
+Summary: Heavy Model Actuarial Modelling
+Home-page: https://github.com/lewisfogden/heavymodel
+Author: Lewis Fogden
+Author-email: lewisfogden@gmail.com
+License: UNKNOWN
+Description: # heavymodel
+        
+        heavymodel is a class-based library which enables Actuaries (and other modelling professionals) to build actuarial models in Python, using a function-based syntax similar to other actuarial modelling software, combined with the simplicity of writing code in python.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
