@@ -102,6 +102,6 @@ class Model:
         import pandas as pd
         df = pd.DataFrame()
         for func in self._funcs:
-            if func.has_one_param:
+            if self._funcs[func].has_one_param:
                 df[func] = pd.Series(self._funcs[func].values)
         return df

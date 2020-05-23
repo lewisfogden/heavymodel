@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="heavymodel-lewisfogden", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Lewis Fogden",
     author_email="lewisfogden@gmail.com",
     description="Heavy Model Actuarial Modelling",
